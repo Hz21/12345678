@@ -31,6 +31,7 @@
         .info-item {
             display: flex;
             margin-bottom: 15px;
+            align-items: center;
         }
         .info-item label {
             width: 80px;
@@ -42,6 +43,7 @@
         .photo-area {
             display: flex;
             align-items: center;
+            margin: 20px 0;
         }
         .photo {
             width: 120px;
@@ -49,12 +51,14 @@
             border: 1px solid #ddd;
             margin-left: 20px;
             position: relative;
+            overflow: hidden;
         }
         .photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+        /* 核心修改：印章背景设为完全透明，仅保留红色边框和文字 */
         .stamp {
             position: absolute;
             top: 0;
@@ -65,10 +69,11 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: #d9534f;
+            color: #d9534f; /* 印章文字红色，保证清晰 */
             font-weight: bold;
-            border: 2px solid #d9534f;
+            border: 2px solid #d9534f; /* 保留红色边框，体现印章轮廓 */
             border-radius: 50%;
+            background-color: transparent; /* 背景完全透明，不遮挡人脸 */
         }
         .stamp .star {
             font-size: 24px;
@@ -77,6 +82,7 @@
         .result {
             text-align: center;
             margin: 20px 0;
+            font-size: 20px;
         }
         .result span {
             font-size: 28px;
@@ -95,6 +101,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 5px;
         }
         .qrcode img {
             max-width: 100%;
@@ -103,18 +110,19 @@
         .verify-tip {
             text-align: center;
             margin-top: 10px;
+            color: #666;
         }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>从业人员预防性健康检查合格证明</h1>
-        <p>南京卫生健康委员会监制</p>
+        <p>武汉卫生健康委员会监制</p>
     </div>
     <div class="content">
         <div class="info-item">
             <label>姓名：</label>
-            <span>李天乐</span>
+            <span>秦保峰</span>
         </div>
         <div class="info-item">
             <label>性别：</label>
@@ -122,11 +130,11 @@
         </div>
         <div class="info-item">
             <label>年龄：</label>
-            <span>19</span>
+            <span>20</span>
         </div>
         <div class="info-item">
             <label>证件号码：</label>
-            <span>832779033</span>
+            <span>832779133</span>
         </div>
         <div class="info-item">
             <label>从业类别：</label>
@@ -134,7 +142,7 @@
         </div>
         <div class="info-item">
             <label>体检机构：</label>
-            <span>南京疾病预防控制中心</span>
+            <span>武汉疾病预防控制中心</span>
         </div>
         <div class="info-item">
             <label>发证日期：</label>
@@ -146,8 +154,7 @@
         </div>
         <div class="photo-area">
             <div class="photo">
-                <!-- 这里替换为实际照片路径 -->
-                <img src="https://p11-sign.douyinpic.com/tos-cn-i-p14lwwcsbr/85bc8737d088443fbb87da608b603fdb~tplv-p14lwwcsbr-7.image?lk3s=7b078dd2&x-expires=1757854800&x-signature=bX0kDECM3UNGoO9uHgr5qTz%2Bu60%3D&from=2064092626&se=false&sc=image&biz_tag=aweme_comment&l=20250914153232016B5FBFE3F1A8BF7F3A" alt="照片">
+                <img src="https://youke1.picui.cn/s1/2025/10/01/68dccac3c4db7.jpg" alt="体检人员照片">
                 <div class="stamp">
                     <div class="star">★</div>
                     <div>体检专用章</div>
@@ -159,11 +166,16 @@
         </div>
         <div class="qrcode-area">
             <div class="qrcode">
-                <!-- 这里替换为实际二维码路径 -->
-                <img src="data:image/png;base64,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" alt="二维码">
+                <img id="autoJumpQrcode" alt="扫描跳转当前页面">
             </div>
-            <div class="verify-tip">扫描二维码验证真伪</div>
+            <div class="verify-tip">扫描二维码自动跳转至本证明页面（验证真伪）</div>
         </div>
     </div>
+
+    <script>
+        const currentPageUrl = window.location.href;
+        const qrcodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(currentPageUrl)}`;
+        document.getElementById('autoJumpQrcode').src = qrcodeUrl;
+    </script>
 </body>
 </html>
